@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UML1_25_opg3
+namespace UML1_25_opg4
 {
     public class Customer
     {

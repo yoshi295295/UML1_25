@@ -9,6 +9,8 @@ Pizza hawaii = new(3, "Hawaii", "Tomato Sauce, Cheese, Pineapple", 64.95);
 
 Order order1 = new(cust1, margherita);
 order1.AddPizza(vesuvio);
+order1.AddPizza(vesuvio);
+order1.AddPizza(hawaii);
 Order order2 = new(cust2, vesuvio);
 Order order3 = new(cust3, hawaii);
 

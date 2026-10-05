@@ -2,4 +2,5 @@
   <Project Path="UML1_25/UML1_25.csproj" />
   <Project Path="UML1_25_opg2/UML1_25_opg2.csproj" />
   <Project Path="UML1_25_opg3/UML1_25_opg3.csproj" Id="962db9fe-5be9-45c3-9a0d-a6f3189f95ba" />
+  <Project Path="UML1_25_opg4/UML1_25_opg4.csproj" Id="cfc73ff4-dd38-4324-8b17-93efbf821ea2" />
 </Solution>
