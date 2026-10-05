@@ -19,27 +19,27 @@ namespace UML1_25_opg3
             _orderCustomer = customer;
             OrderID = ++_orderID;
             AddPizza(pizza);
-            AddComment(comment);
+            AddComment(_orderLine.PizzaNo, comment);
         }
 
-        public void AddComment(string comment)
+        public void AddComment(int pizza, string comment)
         {
             if (comment != null)
             {
-                _orderLine.AddCommentLine(comment);
+                _orderLine.AddCommentLine(pizza, comment);
             }
         }
 
         public void AddPizza(Pizza pizza, string? comment = null)
         {
             _orderLine.AddPizzaLine(pizza);
-            AddComment(comment);
+            AddComment(_orderLine.PizzaNo, comment);
             CalculateTotalPrice();
         }
 
-        public void UpdatePizza(Topping extraTopping)
+        public void UpdatePizza(int pizza, Topping extraTopping)
         {
-            _orderLine.UpdatePizzaLine(extraTopping);
+            _orderLine.UpdatePizzaLine(pizza, extraTopping);
             CalculateTotalPrice();
         }
 

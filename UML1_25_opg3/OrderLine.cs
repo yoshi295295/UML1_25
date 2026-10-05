@@ -10,15 +10,16 @@ namespace UML1_25_opg3
         public Dictionary<int, Pizza> PizzaList { get { return _pizzaList; } }
         private Pizza? _pizzaStore;
         private static int _pizzaNo;
+        public int PizzaNo { get { return _pizzaNo; } }
 
         public OrderLine() {
             _pizzaNo = 0;
             _pizzaList = new Dictionary<int, Pizza>();
         }
 
-        public void AddCommentLine(string comment)
+        public void AddCommentLine(int pizza, string comment)
         {
-            _pizzaList[_pizzaNo].Comment = comment;
+            _pizzaList[pizza].Comment = comment;
         }
 
         public void AddPizzaLine(Pizza pizza)
@@ -29,9 +30,9 @@ namespace UML1_25_opg3
         }
 
 
-        public void UpdatePizzaLine(Topping topping)
+        public void UpdatePizzaLine(int pizza, Topping topping)
         {
-            _pizzaList[_pizzaNo].AddExtraTopping(topping);
+            _pizzaList[pizza].AddExtraTopping(topping);
         } 
     }
 }

@@ -16,17 +16,17 @@ Order order1 = new(cust1, margherita);
 
 Order order2 = new(cust2, vesuvio);
 order2.AddPizza(margherita, "Extra chili");
-order2.UpdatePizza(chili);
+order2.UpdatePizza(2, chili);
 order2.AddPizza(margherita);
 
 Order order3 = new(cust3, hawaii, "Extra champignon");
-order3.UpdatePizza(champignon);
+order3.UpdatePizza(1, champignon);
 order3.AddPizza(hawaii, "Extra champignon and chili please");
-order3.UpdatePizza(champignon);
-order3.UpdatePizza(chili);
+order3.UpdatePizza(2, champignon);
+order3.UpdatePizza(2, chili);
 
 Order order4 = new(cust4, vesuvio, "Noget extra chili, mange tak");
-order4.UpdatePizza(chili);
+order4.UpdatePizza(1, chili);
 
 //OrderRepositoryList orderRepo = new();
 OrderRepositoryDictionary orderRepo = new();
