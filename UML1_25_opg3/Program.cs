@@ -13,9 +13,10 @@ Topping chili = new("Chili", 7);
 Order order1 = new(cust1, margherita);
 order1.AddPizza(vesuvio);
 Order order2 = new(cust2, vesuvio);
-Order order3 = new(cust3, hawaii, "Extra toppings Champignon and Chili please");
-order3.UpdatePizza(hawaii, champignon);
-order3.UpdatePizza(hawaii, chili);
+Order order3 = new(cust3, hawaii);
+order3.AddPizza(hawaii, "Extra champignon and chili please");
+order3.UpdatePizza(champignon);
+order3.UpdatePizza(chili);
 
 Console.WriteLine(order1.ToString());
 Console.WriteLine(order2.ToString());

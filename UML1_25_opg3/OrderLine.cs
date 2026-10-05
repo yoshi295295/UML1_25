@@ -6,8 +6,32 @@ namespace UML1_25_opg3
 {
     public class OrderLine
     {
-        // add logic for pizzas having a specific topping and comment
-        // might have to use dictionary to address specific pizzas
-        // hmm
+        private Dictionary<int, Pizza> _pizzaList;
+        public Dictionary<int, Pizza> PizzaList { get { return _pizzaList; } }
+        private Pizza _pizzaStore;
+        private static int _pizzaNo = 0;
+
+        public OrderLine() {
+            _pizzaNo = 0;
+            _pizzaList = new Dictionary<int, Pizza>();
+        }
+
+        public void AddCommentLine(string comment)
+        {
+            _pizzaList[_pizzaNo].Comment = comment;
+        }
+
+        public void AddPizzaLine(Pizza pizza)
+        {
+            ++_pizzaNo;
+            _pizzaStore = new Pizza(pizza.Number, pizza.Name, pizza.Toppings, pizza.Price);
+            _pizzaList.Add(_pizzaNo, _pizzaStore);
+        }
+
+
+        public void UpdatePizzaLine(Topping topping)
+        {
+            _pizzaList[_pizzaNo].AddExtraTopping(topping);
+        } 
     }
 }

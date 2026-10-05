@@ -1,59 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Text;
 
 namespace UML1_25_opg3
 {
     public class Order
     {
-        private List<Pizza> _pizzaList;
+        private OrderLine _orderLine;
         private static int _orderID = 0;
         public int OrderID { get; private set; }
         private Customer _orderCustomer;
         public double? TotalPrice { get; private set; }
-        public int NoOfItems { get { return _pizzaList.Count; } }
+        public int NoOfItems { get { return _orderLine.PizzaList.Count; } }
         public Topping ExtraTopping { get; private set; }
-        public string Comment { get; private set; }
 
         public Order(Customer customer, Pizza pizza, string? comment = null)
         {
-            _pizzaList = new List<Pizza>();
+            _orderLine = new OrderLine();
             _orderCustomer = customer;
             _orderID++;
             OrderID = _orderID;
             AddPizza(pizza);
+            AddComment(comment);
+        }
+
+        public void AddComment(string comment)
+        {
             if (comment != null)
             {
-                Comment = comment;
+                _orderLine.AddCommentLine(comment);
             }
-            else Comment = null;
         }
 
-        public void AddPizza(Pizza pizza)
+        public void AddPizza(Pizza pizza, string? comment = null)
         {
-           _pizzaList.Add(pizza);
-           CalculateTotalPrice();
+            _orderLine.AddPizzaLine(pizza);
+            AddComment(comment);
+            CalculateTotalPrice();
         }
 
-        public void UpdatePizza(Pizza pizza, Topping extraTopping)
+        public void UpdatePizza(Topping extraTopping)
         {
-            if (_pizzaList.Contains(pizza))
-            {
-                pizza.AddExtraTopping(extraTopping);
-                CalculateTotalPrice();
-            }
+            _orderLine.UpdatePizzaLine(extraTopping);
+            CalculateTotalPrice();
         }
 
         public double? CalculateTotalPrice()
         {
             double? sum = 0;
-            foreach (var pizza in _pizzaList)
+            foreach (var pizza in _orderLine.PizzaList)
             {
-                sum += pizza.Price;
-                if (pizza._extraToppings != null)
+                sum += pizza.Value.Price;
+                if (pizza.Value._extraToppings != null)
                 {
-                    foreach (var extraTopping in pizza._extraToppings)
+                    foreach (var extraTopping in pizza.Value._extraToppings)
                     {
                         sum += extraTopping.Price;
                     }
@@ -67,10 +67,11 @@ namespace UML1_25_opg3
             return null;
         }
 
+
         public string ListAllPizzas()
         {
             string allPizzas = "";
-            foreach (var pizza in _pizzaList)
+            foreach (var pizza in _orderLine.PizzaList)
             {
                 allPizzas = allPizzas + "\n" + pizza.ToString();
             }
@@ -79,7 +80,7 @@ namespace UML1_25_opg3
 
         public override string ToString()
         {
-            return $"{NoOfItems} pizza(s) ordered: {ListAllPizzas()}\nCustomer: {_orderCustomer.ToString()}\nComment: {Comment}\nTotal Price: {CalculateTotalPrice()}\n";
+            return $"{NoOfItems} pizza(s) ordered: {ListAllPizzas()}\nCustomer: {_orderCustomer.ToString()}\nTotal Price: {CalculateTotalPrice()}\n";
         }
     }
 }
