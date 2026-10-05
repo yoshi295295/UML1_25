@@ -18,8 +18,7 @@ namespace UML1_25_opg3
             _orderLine = new OrderLine();
             _orderCustomer = customer;
             OrderID = ++_orderID;
-            AddPizza(pizza);
-            AddComment(_orderLine.PizzaNo, comment);
+            AddPizza(pizza, comment);
         }
 
         public void AddComment(int pizza, string comment)
