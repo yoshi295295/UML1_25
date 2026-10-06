@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -22,15 +23,16 @@ namespace UML1_25_opg4
 
         public Order? SearchOrder(int orderNumber)
         {
-            if (_orders[orderNumber - 1] != null && (orderNumber - 1) >= 0 && (orderNumber - 1) < _orders.Count) { 
-                return _orders[orderNumber - 1]; 
+            foreach (var order in _orders)
+            {
+                if (order.OrderID == orderNumber) { return order; }
             }
             return null;
             }
 
         public void DeleteOrder(int orderNumber)
         {
-            _orders.Remove(_orders[orderNumber - 1]);
+            _orders.Remove(SearchOrder(orderNumber));
         }
 
         public void UpdateOrder(int orderNumber, Order updatedOrder)

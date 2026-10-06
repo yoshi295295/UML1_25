@@ -3,7 +3,7 @@
 Customer cust1 = new("Tom Jensen", "Havevej 3");
 Customer cust2 = new("Lars Jensen", "Blomstvej 5");
 Customer cust3 = new("Niels Jensen", "Gårdvej 7");
-Customer cust4 = new("Daniel Jensen", "Møllevej 9");
+Customer cust4 = new("Daniel Jensen", "Bredvej 9");
 
 Pizza margherita = new(1, "Margherita", "Tomato Sauce, Cheese", 59.95);
 Pizza vesuvio = new(2, "Vesuvio", "Tomato Sauce, Cheese, Ham", 69.95);
@@ -16,12 +16,12 @@ Order order1 = new(cust1, margherita);
 
 Order order2 = new(cust2, vesuvio);
 order2.AddPizza(margherita, "Extra chili");
-order2.UpdatePizza(2, chili);
 order2.AddPizza(margherita);
+order2.UpdatePizza(2, chili);
 
 Order order3 = new(cust3, hawaii, "Extra champignon");
-order3.UpdatePizza(1, champignon);
 order3.AddPizza(hawaii, "Extra champignon and chili please");
+order3.UpdatePizza(1, champignon);
 order3.UpdatePizza(2, champignon);
 order3.UpdatePizza(2, chili);
 
@@ -41,7 +41,7 @@ if (foundOrder != null)
 }
 else { Console.WriteLine("Order not found"); }
 
-orderRepo.UpdateOrder(3, order4);
+orderRepo.UpdateOrder(1, order4);
 
 orderRepo.PrintAll();
 

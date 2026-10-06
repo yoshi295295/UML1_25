@@ -36,7 +36,7 @@ namespace UML1_25_opg4
 
         public void UpdateOrder(int orderNumber, Order updatedOrder)
         {
-            _orders.Remove(orderNumber);
+            DeleteOrder(orderNumber);
             _orders.Add(orderNumber, updatedOrder);
         }
 
